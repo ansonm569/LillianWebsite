@@ -1,0 +1,45 @@
+.card {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.soldBadge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  background: var(--color-sold);
+  padding: 0.2rem 0.5rem;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card:hover .info {
+  opacity: 1;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+.price {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}

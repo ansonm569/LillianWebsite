@@ -2,7 +2,7 @@ import { catalog, getArtwork } from '@/data/catalog'
 
 describe('catalog', () => {
   test('every entry has required fields with valid values', () => {
-    catalog.forEach((artwork, i) => {
+    catalog.forEach((artwork) => {
       expect(artwork.slug).toBeTruthy()
       expect(artwork.title).toBeTruthy()
       expect(artwork.year).toBeGreaterThan(1900)

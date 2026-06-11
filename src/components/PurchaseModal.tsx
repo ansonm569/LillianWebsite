@@ -5,7 +5,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import type { Artwork } from '@/data/catalog'
 import styles from './PurchaseModal.module.css'
 
-type Props = { artwork: Artwork; onClose: () => void }
+type Props = { artwork: Artwork; onClose: () => void; onSuccess?: () => void }
 
 type FormState = {
   name: string; email: string; line1: string
@@ -25,7 +25,7 @@ const CARD_STYLE = {
   },
 }
 
-export default function PurchaseModal({ artwork, onClose }: Props) {
+export default function PurchaseModal({ artwork, onClose, onSuccess }: Props) {
   const stripe = useStripe()
   const elements = useElements()
   const [form, setForm] = useState<FormState>({
@@ -67,14 +67,16 @@ export default function PurchaseModal({ artwork, onClose }: Props) {
         throw new Error(data.error ?? 'Payment setup failed')
       }
       const { clientSecret } = await res.json()
-      const cardElement = elements.getElement(CardElement)!
+      const cardElement = elements.getElement(CardElement)
+      if (!cardElement) throw new Error('Card element unavailable — please refresh and try again')
       const { error } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: cardElement,
           billing_details: { name: form.name, email: form.email },
         },
       })
-      if (error) throw new Error(error.message)
+      if (error) throw new Error(error.message ?? 'Payment failed — please try again')
+      onSuccess?.()
       setStatus('success')
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : 'An error occurred')

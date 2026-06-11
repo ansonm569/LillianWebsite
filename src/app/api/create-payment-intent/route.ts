@@ -18,7 +18,18 @@ type Body = {
 }
 
 export async function POST(req: NextRequest) {
-  const { slug, name, email, address }: Body = await req.json()
+  let body: Body
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+  }
+
+  const { slug, name, email, address } = body
+
+  if (!slug || !name || !email || !address?.line1 || !address?.city || !address?.state || !address?.postal_code || !address?.country) {
+    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  }
 
   const artwork = getArtwork(slug)
   if (!artwork) {
@@ -28,22 +39,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Artwork is not available' }, { status: 400 })
   }
 
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: artwork.price * 100,
-    currency: 'usd',
-    receipt_email: email,
-    metadata: {
-      artwork_slug: slug,
-      artwork_title: artwork.title,
-      buyer_name: name,
-      buyer_email: email,
-      shipping_line1: address.line1,
-      shipping_city: address.city,
-      shipping_state: address.state,
-      shipping_postal_code: address.postal_code,
-      shipping_country: address.country,
-    },
-  })
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(artwork.price * 100),
+      currency: 'usd',
+      payment_method_types: ['card'],
+      receipt_email: email,
+      metadata: {
+        artwork_slug: slug,
+        artwork_title: artwork.title,
+        buyer_name: name,
+        buyer_email: email,
+        shipping_line1: address.line1,
+        shipping_city: address.city,
+        shipping_state: address.state,
+        shipping_postal_code: address.postal_code,
+        shipping_country: address.country,
+      },
+    })
 
-  return NextResponse.json({ clientSecret: paymentIntent.client_secret })
+    if (!paymentIntent.client_secret) {
+      return NextResponse.json({ error: 'Payment setup failed' }, { status: 500 })
+    }
+
+    return NextResponse.json({ clientSecret: paymentIntent.client_secret })
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Payment setup failed'
+    return NextResponse.json({ error: message }, { status: 500 })
+  }
 }

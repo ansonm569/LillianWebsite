@@ -8,16 +8,21 @@
   overflow: hidden;
 }
 
+.imageWrapper.soldWrapper img {
+  filter: grayscale(60%);
+  opacity: 0.75;
+}
+
 .soldBadge {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
   font-size: 0.65rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-bg);
-  background: var(--color-sold);
-  padding: 0.2rem 0.5rem;
+  background: var(--color-text);
+  padding: 0.25rem 0.6rem;
 }
 
 .info {
@@ -41,5 +46,12 @@
 
 .price {
   font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.soldLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--color-muted);
 }

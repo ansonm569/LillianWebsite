@@ -5,20 +5,22 @@ import { catalog, getArtwork } from '@/data/catalog'
 import styles from './page.module.css'
 import PurchaseButton from './PurchaseButton'
 
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
 export function generateStaticParams() {
   return catalog.map(a => ({ slug: a.slug }))
 }
 
 export async function generateMetadata({ params }: Props) {
-  const artwork = getArtwork(params.slug)
+  const { slug } = await params
+  const artwork = getArtwork(slug)
   if (!artwork) return {}
   return { title: `${artwork.title} — Lillian MacKinney` }
 }
 
-export default function PiecePage({ params }: Props) {
-  const artwork = getArtwork(params.slug)
+export default async function PiecePage({ params }: Props) {
+  const { slug } = await params
+  const artwork = getArtwork(slug)
   if (!artwork) notFound()
 
   return (

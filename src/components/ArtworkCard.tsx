@@ -8,7 +8,7 @@ type Props = { artwork: Artwork }
 export default function ArtworkCard({ artwork }: Props) {
   return (
     <Link href={`/work/${artwork.slug}`} className={styles.card}>
-      <div className={styles.imageWrapper}>
+      <div className={`${styles.imageWrapper}${!artwork.available ? ` ${styles.soldWrapper}` : ''}`}>
         <Image
           src={artwork.image}
           alt={artwork.title}
@@ -22,9 +22,10 @@ export default function ArtworkCard({ artwork }: Props) {
       </div>
       <div className={styles.info}>
         <span className={styles.title}>{artwork.title}</span>
-        {artwork.available && (
-          <span className={styles.price}>${artwork.price}</span>
-        )}
+        {artwork.available
+          ? <span className={styles.price}>${artwork.price}</span>
+          : <span className={styles.soldLabel}>Sold</span>
+        }
       </div>
     </Link>
   )

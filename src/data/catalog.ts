@@ -19,7 +19,7 @@ export const catalog: Artwork[] = [
     dimensions: '18 × 24 in',
     price: 480,
     available: true,
-    image: '/images/untitled-no-1.jpg',
+    image: '/images/untitled-no-1.png',
   },
   {
     slug: 'study-in-ink',
@@ -29,7 +29,7 @@ export const catalog: Artwork[] = [
     dimensions: '12 × 16 in',
     price: 320,
     available: true,
-    image: '/images/study-in-ink.jpg',
+    image: '/images/study-in-ink.png',
   },
   {
     slug: 'evening-figure',
@@ -39,7 +39,7 @@ export const catalog: Artwork[] = [
     dimensions: '24 × 36 in',
     price: 1200,
     available: false,
-    image: '/images/evening-figure.jpg',
+    image: '/images/evening-figure.png',
   },
 ]
 

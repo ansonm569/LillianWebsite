@@ -20,9 +20,10 @@ describe('ArtworkCard', () => {
     expect(screen.getByText('$400')).toBeInTheDocument()
   })
 
-  test('renders Sold label and hides price when not available', () => {
+  test('renders Sold indicators and hides price when not available', () => {
     render(<ArtworkCard artwork={{ ...base, available: false }} />)
-    expect(screen.getByText('Sold')).toBeInTheDocument()
+    const soldElements = screen.getAllByText('Sold')
+    expect(soldElements.length).toBeGreaterThanOrEqual(1)
     expect(screen.queryByText('$400')).not.toBeInTheDocument()
   })
 

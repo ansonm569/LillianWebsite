@@ -13,7 +13,7 @@ export default function AboutPage() {
             Her practice explores form, light, and the quiet geometry of the observed world.
           </p>
           <p>
-            Based in [City].
+            Based in Milwaukee, WI.
           </p>
         </div>
         <p className={styles.contact}>

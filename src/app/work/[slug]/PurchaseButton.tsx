@@ -10,6 +10,11 @@ type Props = { artwork: Artwork }
 
 export default function PurchaseButton({ artwork }: Props) {
   const [open, setOpen] = useState(false)
+  const [sold, setSold] = useState(false)
+
+  if (sold) {
+    return <p className={styles.sold}>Sold</p>
+  }
 
   return (
     <>
@@ -18,7 +23,11 @@ export default function PurchaseButton({ artwork }: Props) {
       </button>
       {open && (
         <StripeProvider>
-          <PurchaseModal artwork={artwork} onClose={() => setOpen(false)} />
+          <PurchaseModal
+            artwork={artwork}
+            onClose={() => setOpen(false)}
+            onSuccess={() => setSold(true)}
+          />
         </StripeProvider>
       )}
     </>

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($env:PATH = \"C:\\\\Users\\\\AnsonMacKinney\\\\nodejs\\\\node-v24.16.0-win-x64;$env:PATH\"; cd \"C:\\\\Users\\\\AnsonMacKinney\\\\GitHub\\\\Lillian Site\\\\LillianWebsite\"; npm run)",
+      "Bash(git commit *)"
+    ]
+  }
+}

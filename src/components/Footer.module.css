@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.footer a:hover { color: var(--color-text); }
+
+.copy { font-style: italic; }
+
+@media (max-width: 480px) {
+  .footer {
+    flex-direction: column;
+    gap: var(--space-xs);
+    text-align: center;
+    padding: var(--space-sm);
+  }
+}

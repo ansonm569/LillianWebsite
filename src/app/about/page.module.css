@@ -1,0 +1,40 @@
+.page {
+  padding: var(--space-xl) var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.bio p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+
+.contact a {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1px;
+}
+
+.contact a:hover { border-color: var(--color-text); }

@@ -1,0 +1,50 @@
+.page {
+  padding: var(--space-lg) var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  min-height: 65vh;
+}
+
+.introCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+.cta {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-text);
+  padding-bottom: 2px;
+  width: fit-content;
+}
+
+.cta:hover {
+  color: var(--color-muted);
+  border-color: var(--color-muted);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: var(--space-md);
+  }
+}

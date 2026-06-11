@@ -2,7 +2,36 @@
   "permissions": {
     "allow": [
       "PowerShell($env:PATH = \"C:\\\\Users\\\\AnsonMacKinney\\\\nodejs\\\\node-v24.16.0-win-x64;$env:PATH\"; cd \"C:\\\\Users\\\\AnsonMacKinney\\\\GitHub\\\\Lillian Site\\\\LillianWebsite\"; npm run)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "PowerShell(cd \"C:/Users/AnsonMacKinney/GitHub/Lillian Site/LillianWebsite\"; $env:PATH = \"C:\\\\Users\\\\AnsonMacKinney\\\\nodejs\\\\node-v24.16.0-win-x64;$env:PATH\"; npm test -- --testPathPattern=\"catalog\" 2>&1)",
+      "PowerShell(cd \"C:/Users/AnsonMacKinney/GitHub/Lillian Site/LillianWebsite\"; $env:PATH = \"C:\\\\Users\\\\AnsonMacKinney\\\\nodejs\\\\node-v24.16.0-win-x64;$env:PATH\"; npm test -- --testPathPatterns=\"catalog\" 2>&1)",
+      "PowerShell(cd \"C:/Users/AnsonMacKinney/GitHub/Lillian Site/LillianWebsite\"; $env:PATH = \"C:\\\\Users\\\\AnsonMacKinney\\\\nodejs\\\\node-v24.16.0-win-x64;$env:PATH\"; npm run build 2>&1 | Select-Object -Last 50)",
+      "Bash(npm test *)",
+      "Bash(mkdir -p \"C:/Users/AnsonMacKinney/.claude/projects/c--Users-AnsonMacKinney-GitHub-Lillian-Site-LillianWebsite/memory\")",
+      "PowerShell(ls \"C:\\\\Users\\\\AnsonMacKinney\\\\GitHub\\\\Lillian Site\\\\LillianWebsite\\\\src\\\\app\\\\api\\\\\" -ErrorAction SilentlyContinue)",
+      "PowerShell(ls \"C:\\\\Users\\\\AnsonMacKinney\\\\GitHub\\\\Lillian Site\\\\LillianWebsite\\\\src\\\\lib\\\\\" -ErrorAction SilentlyContinue)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://lillian-website-ffbp30eyn-ansonm569s-projects.vercel.app\")",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(curl -s -o /dev/null -w \"Direct Vercel URL: %{http_code}\\\\n\" \"https://lillian-website-ffbp30eyn-ansonm569s-projects.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"lillianmackinney.com: %{http_code}\\\\n\" \"https://lillianmackinney.com\")",
+      "Bash(curl -s -o /dev/null -w \"www.lillianmackinney.com: %{http_code}\\\\n\" \"https://www.lillianmackinney.com\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://lillian-website-kh69r9i9l-ansonm569s-projects.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://www.lillianmackinney.com\")",
+      "Bash(curl -s -o /dev/null -w \"New deploy URL: %{http_code}\\\\n\" \"https://lillian-website-7a9waag9z-ansonm569s-projects.vercel.app\")",
+      "Bash(curl -sv \"https://lillian-website-7a9waag9z-ansonm569s-projects.vercel.app\")",
+      "Bash(cat next.config.ts)",
+      "Bash(cat next.config.js)",
+      "Bash(cat .vercel/project.json)",
+      "Bash(curl -s -o /dev/null -w \"lillian-website-self.vercel.app: %{http_code}\\\\n\" \"https://lillian-website-self.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"lillian-website-ansonm569s-projects.vercel.app: %{http_code}\\\\n\" \"https://lillian-website-ansonm569s-projects.vercel.app\")",
+      "Bash(curl -sv \"https://lillian-website-ansonm569s-projects.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"boilingrock.com: %{http_code}\\\\n\" \"https://boilingrock.com\")",
+      "Bash(curl -s -o /dev/null -w \"blytheandanson.com: %{http_code}\\\\n\" \"https://blytheandanson.com\")",
+      "Bash(curl -sv \"https://lillian-website-ansonm569s-projects.vercel.app/\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\AnsonMacKinney\\.claude\\projects\\c--Users-AnsonMacKinney-GitHub-Lillian-Site-LillianWebsite"
     ]
   }
 }

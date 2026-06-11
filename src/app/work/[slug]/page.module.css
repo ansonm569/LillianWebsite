@@ -1,0 +1,91 @@
+.page {
+  padding: var(--space-lg) var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  position: sticky;
+  top: var(--space-md);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: var(--space-xs);
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  font-style: italic;
+  margin-top: var(--space-sm);
+}
+
+.purchaseBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.button {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  width: fit-content;
+  transition: opacity 0.2s;
+}
+
+.button:hover:not(:disabled) { opacity: 0.8; }
+.button:disabled { opacity: 0.5; cursor: default; }
+
+.sold {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-sold);
+}
+
+.back {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: var(--space-md);
+  display: inline-block;
+}
+
+.back:hover { color: var(--color-text); }
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  .infoCol { position: static; }
+}

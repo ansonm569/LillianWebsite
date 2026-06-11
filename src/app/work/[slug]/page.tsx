@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { catalog, getArtwork } from '@/data/catalog'
 import styles from './page.module.css'
+import PurchaseButton from './PurchaseButton'
 
 type Props = { params: { slug: string } }
 
@@ -45,8 +46,7 @@ export default function PiecePage({ params }: Props) {
             {artwork.available ? (
               <>
                 <p className={styles.price}>${artwork.price}</p>
-                {/* Replace with <PurchaseButton artwork={artwork} /> in Task 9 */}
-                <button className={styles.button} disabled>Purchase</button>
+                <PurchaseButton artwork={artwork} />
               </>
             ) : (
               <p className={styles.sold}>Sold</p>

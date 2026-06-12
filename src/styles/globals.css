@@ -10,6 +10,7 @@
   --color-muted: #6b6b68;
   --color-border: #e5e3de;
   --color-sold: #9ca3af;
+  --color-accent: #c4a882;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -18,11 +19,13 @@
   --space-xl: 8rem;
 
   --max-width: 1200px;
+  --transition: 0.25s ease;
 }
 
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -30,7 +33,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-body, system-ui, sans-serif);
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

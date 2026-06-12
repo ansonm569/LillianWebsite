@@ -38,9 +38,20 @@ export default async function PiecePage({ params }: Props) {
         </div>
         <div className={styles.infoCol}>
           <h1 className={styles.title}>{artwork.title}</h1>
-          <p className={styles.meta}>{artwork.year}</p>
-          <p className={styles.meta}>{artwork.medium}</p>
-          <p className={styles.meta}>{artwork.dimensions}</p>
+          <div className={styles.metaList}>
+            <div className={styles.meta}>
+              <span className={styles.metaLabel}>Year</span>
+              <span>{artwork.year}</span>
+            </div>
+            <div className={styles.meta}>
+              <span className={styles.metaLabel}>Medium</span>
+              <span>{artwork.medium}</span>
+            </div>
+            <div className={styles.meta}>
+              <span className={styles.metaLabel}>Size</span>
+              <span>{artwork.dimensions}</span>
+            </div>
+          </div>
           {artwork.description && (
             <p className={styles.description}>{artwork.description}</p>
           )}

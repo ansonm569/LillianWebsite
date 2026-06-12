@@ -1,11 +1,19 @@
 .card {
   display: block;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .imageWrapper {
   position: relative;
   overflow: hidden;
+}
+
+.imageWrapper img {
+  transition: transform 0.45s ease;
+}
+
+.card:hover .imageWrapper img {
+  transform: scale(1.03);
 }
 
 .imageWrapper.soldWrapper img {
@@ -29,13 +37,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-top: 0.5rem;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.card:hover .info {
-  opacity: 1;
+  padding-top: 0.65rem;
 }
 
 .title {

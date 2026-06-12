@@ -3,3 +3,25 @@
   max-width: var(--max-width);
   margin: 0 auto;
 }
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.count {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}

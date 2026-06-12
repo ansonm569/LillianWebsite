@@ -6,19 +6,24 @@ export default function AboutPage() {
   return (
     <div className={styles.page}>
       <div className={styles.content}>
-        <h1 className={styles.name}>Lillian MacKinney</h1>
+        <div className={styles.nameBlock}>
+          <h1 className={styles.name}>Lillian MacKinney</h1>
+          <p className={styles.location}>Milwaukee, WI</p>
+        </div>
         <div className={styles.bio}>
           <p>
             Lillian MacKinney is an artist working in charcoal, Indian ink, and oil.
             Her practice explores form, light, and the quiet geometry of the observed world.
           </p>
           <p>
-            Based in Milwaukee, WI.
+            Each piece is made by hand and exists as a singular object.
           </p>
         </div>
-        <p className={styles.contact}>
+        <div className={styles.divider} />
+        <div className={styles.contactBlock}>
+          <span className={styles.contactLabel}>Contact</span>
           <a href="mailto:contact@lillianmackinney.com">contact@lillianmackinney.com</a>
-        </p>
+        </div>
       </div>
     </div>
   )

@@ -27,6 +27,7 @@ function mediumGroup(medium: string): string {
 export default function WorksFilter({ artworks }: Props) {
   const [medium, setMedium] = useState('All')
   const [year, setYear] = useState('All')
+  const [collection, setCollection] = useState('All')
   const [sort, setSort] = useState<SortKey>('default')
 
   const mediumGroups = useMemo(() => {
@@ -45,6 +46,7 @@ export default function WorksFilter({ artworks }: Props) {
     let result = artworks.filter(a => {
       if (medium !== 'All' && mediumGroup(a.medium) !== medium) return false
       if (year !== 'All' && String(a.year) !== year) return false
+      if (collection !== 'All' && a.collection !== collection) return false
       return true
     })
 
@@ -56,7 +58,7 @@ export default function WorksFilter({ artworks }: Props) {
     return result
   }, [artworks, medium, year, sort])
 
-  const activeFilters = (medium !== 'All' ? 1 : 0) + (year !== 'All' ? 1 : 0)
+  const activeFilters = (medium !== 'All' ? 1 : 0) + (year !== 'All' ? 1 : 0) + (collection !== 'All' ? 1 : 0)
 
   return (
     <>
@@ -90,10 +92,24 @@ export default function WorksFilter({ artworks }: Props) {
             </select>
           </div>
 
+          <div className={styles.filterGroup}>
+            <label className={styles.filterLabel} htmlFor="filter-collection">Collection</label>
+            <select
+              id="filter-collection"
+              className={styles.select}
+              value={collection}
+              onChange={e => setCollection(e.target.value)}
+            >
+              <option value="All">All</option>
+              <option value="30x30x30">30x30x30</option>
+              <option value="A Kind Death">A Kind Death</option>
+            </select>
+          </div>
+
           {activeFilters > 0 && (
             <button
               className={styles.clearBtn}
-              onClick={() => { setMedium('All'); setYear('All') }}
+              onClick={() => { setMedium('All'); setYear('All'); setCollection('All') }}
             >
               Clear filters
             </button>

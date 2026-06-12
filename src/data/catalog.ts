@@ -10,6 +10,7 @@ export type Artwork = {
   imageWidth: number
   imageHeight: number
   description?: string
+  collection?: string
 }
 
 export const catalog: Artwork[] = [
@@ -24,6 +25,7 @@ export const catalog: Artwork[] = [
     image: '/images/untitled-no-1.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'study-in-ink',
@@ -36,6 +38,7 @@ export const catalog: Artwork[] = [
     image: '/images/study-in-ink.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'evening-figure',
@@ -48,6 +51,7 @@ export const catalog: Artwork[] = [
     image: '/images/evening-figure.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'still-life-with-window',
@@ -60,6 +64,7 @@ export const catalog: Artwork[] = [
     image: '/images/still-life-with-window.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'nocturne',
@@ -72,6 +77,7 @@ export const catalog: Artwork[] = [
     image: '/images/nocturne.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'anatomy-study-i',
@@ -84,6 +90,7 @@ export const catalog: Artwork[] = [
     image: '/images/anatomy-study-i.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'anatomy-study-ii',
@@ -96,6 +103,7 @@ export const catalog: Artwork[] = [
     image: '/images/anatomy-study-ii.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'sleeping-form',
@@ -108,6 +116,7 @@ export const catalog: Artwork[] = [
     image: '/images/sleeping-form.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'figure-in-repose',
@@ -120,6 +129,7 @@ export const catalog: Artwork[] = [
     image: '/images/figure-in-repose.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'light-study',
@@ -132,6 +142,7 @@ export const catalog: Artwork[] = [
     image: '/images/light-study.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'interior-i',
@@ -144,6 +155,7 @@ export const catalog: Artwork[] = [
     image: '/images/interior-i.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'interior-ii',
@@ -156,6 +168,7 @@ export const catalog: Artwork[] = [
     image: '/images/interior-ii.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'the-corridor',
@@ -168,6 +181,7 @@ export const catalog: Artwork[] = [
     image: '/images/the-corridor.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'hand-study',
@@ -180,6 +194,7 @@ export const catalog: Artwork[] = [
     image: '/images/hand-study.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'portrait-of-m',
@@ -192,6 +207,7 @@ export const catalog: Artwork[] = [
     image: '/images/portrait-of-m.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: '30x30x30',
   },
   {
     slug: 'portrait-of-s',
@@ -204,6 +220,7 @@ export const catalog: Artwork[] = [
     image: '/images/portrait-of-s.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'overcast',
@@ -216,6 +233,7 @@ export const catalog: Artwork[] = [
     image: '/images/overcast.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'study-for-a-landscape',
@@ -228,6 +246,7 @@ export const catalog: Artwork[] = [
     image: '/images/study-for-a-landscape.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'small-hours',
@@ -240,6 +259,7 @@ export const catalog: Artwork[] = [
     image: '/images/small-hours.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'arrangement-in-gray',
@@ -252,6 +272,7 @@ export const catalog: Artwork[] = [
     image: '/images/arrangement-in-gray.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'arrangement-in-ivory',
@@ -264,6 +285,7 @@ export const catalog: Artwork[] = [
     image: '/images/arrangement-in-ivory.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'dusk',
@@ -276,6 +298,7 @@ export const catalog: Artwork[] = [
     image: '/images/dusk.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'the-observer',
@@ -288,6 +311,7 @@ export const catalog: Artwork[] = [
     image: '/images/the-observer.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'form-study-iv',
@@ -300,6 +324,7 @@ export const catalog: Artwork[] = [
     image: '/images/form-study-iv.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'form-study-v',
@@ -312,6 +337,7 @@ export const catalog: Artwork[] = [
     image: '/images/form-study-v.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'breath',
@@ -324,6 +350,7 @@ export const catalog: Artwork[] = [
     image: '/images/breath.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'solitude',
@@ -336,6 +363,7 @@ export const catalog: Artwork[] = [
     image: '/images/solitude.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'still-study',
@@ -348,6 +376,7 @@ export const catalog: Artwork[] = [
     image: '/images/still-study.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'late-work',
@@ -360,6 +389,7 @@ export const catalog: Artwork[] = [
     image: '/images/late-work.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
   {
     slug: 'without-ground',
@@ -372,6 +402,7 @@ export const catalog: Artwork[] = [
     image: '/images/without-ground.jpg',
     imageWidth: 1800,
     imageHeight: 1800,
+    collection: 'A Kind Death',
   },
 ]
 

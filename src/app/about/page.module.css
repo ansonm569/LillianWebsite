@@ -10,7 +10,7 @@
 /* Two-column top section */
 .layout {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 480px;
   gap: var(--space-xl);
   align-items: start;
 }

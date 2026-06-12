@@ -58,7 +58,6 @@ export default function AboutPage() {
               style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
             />
           </div>
-          <p className={styles.photoCaption}>In the studio, Milwaukee, 2024</p>
         </div>
       </div>
 

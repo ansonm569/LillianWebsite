@@ -13,8 +13,8 @@ export default function Home() {
           <Image
             src={featured.image}
             alt={featured.title}
-            width={800}
-            height={1000}
+            width={featured.imageWidth}
+            height={featured.imageHeight}
             style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
             priority
           />
@@ -39,8 +39,8 @@ export default function Home() {
               <Image
                 src={artwork.image}
                 alt={artwork.title}
-                width={600}
-                height={800}
+                width={artwork.imageWidth}
+                height={artwork.imageHeight}
                 style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
               />
               <div className={styles.selectedItemInfo}>

@@ -17,6 +17,8 @@ type Body = {
   address: ShippingAddress
 }
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 export async function POST(req: NextRequest) {
   let body: Body
   try {
@@ -29,6 +31,10 @@ export async function POST(req: NextRequest) {
 
   if (!slug || !name || !email || !address?.line1 || !address?.city || !address?.state || !address?.postal_code || !address?.country) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  }
+
+  if (!EMAIL_PATTERN.test(email)) {
+    return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
   }
 
   const artwork = getArtwork(slug)
@@ -45,16 +51,22 @@ export async function POST(req: NextRequest) {
       currency: 'usd',
       payment_method_types: ['card'],
       receipt_email: email,
+      description: `Artwork purchase: ${artwork.title}`,
+      shipping: {
+        name,
+        address: {
+          line1: address.line1,
+          city: address.city,
+          state: address.state,
+          postal_code: address.postal_code,
+          country: address.country,
+        },
+      },
       metadata: {
         artwork_slug: slug,
         artwork_title: artwork.title,
         buyer_name: name,
         buyer_email: email,
-        shipping_line1: address.line1,
-        shipping_city: address.city,
-        shipping_state: address.state,
-        shipping_postal_code: address.postal_code,
-        shipping_country: address.country,
       },
     })
 
@@ -64,7 +76,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ clientSecret: paymentIntent.client_secret })
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Payment setup failed'
-    return NextResponse.json({ error: message }, { status: 500 })
+    console.error('PaymentIntent creation failed:', err)
+    return NextResponse.json({ error: 'Payment setup failed — please try again.' }, { status: 500 })
   }
 }

@@ -42,6 +42,12 @@ export default function WorksFilter({ artworks }: Props) {
     return ['All', ...Array.from(seen).sort((a, b) => b - a).map(String)]
   }, [artworks])
 
+  const collections = useMemo(() => {
+    const seen = new Set<string>()
+    artworks.forEach(a => { if (a.collection) seen.add(a.collection) })
+    return ['All', ...Array.from(seen)]
+  }, [artworks])
+
   const filtered = useMemo(() => {
     let result = artworks.filter(a => {
       if (medium !== 'All' && mediumGroup(a.medium) !== medium) return false
@@ -56,7 +62,7 @@ export default function WorksFilter({ artworks }: Props) {
     else if (sort === 'size-asc') result = [...result].sort((a, b) => parseArea(a.dimensions) - parseArea(b.dimensions))
 
     return result
-  }, [artworks, medium, year, sort])
+  }, [artworks, medium, year, collection, sort])
 
   const activeFilters = (medium !== 'All' ? 1 : 0) + (year !== 'All' ? 1 : 0) + (collection !== 'All' ? 1 : 0)
 
@@ -100,9 +106,9 @@ export default function WorksFilter({ artworks }: Props) {
               value={collection}
               onChange={e => setCollection(e.target.value)}
             >
-              <option value="All">All</option>
-              <option value="30x30x30">30x30x30</option>
-              <option value="A Kind Death">A Kind Death</option>
+              {collections.map(c => (
+                <option key={c} value={c}>{c}</option>
+              ))}
             </select>
           </div>
 

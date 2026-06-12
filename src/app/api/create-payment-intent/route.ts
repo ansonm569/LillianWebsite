@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { stripe } from '@/lib/stripe'
+import { getStripe } from '@/lib/stripe'
 import { getArtwork } from '@/data/catalog'
 
 type ShippingAddress = {
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const paymentIntent = await stripe.paymentIntents.create({
+    const paymentIntent = await getStripe().paymentIntents.create({
       amount: Math.round(artwork.price * 100),
       currency: 'usd',
       payment_method_types: ['card'],

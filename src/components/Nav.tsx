@@ -7,6 +7,7 @@ export default function Nav() {
       <Link href="/" className={styles.brand}>Lillian MacKinney</Link>
       <div className={styles.links}>
         <Link href="/work">Work</Link>
+        <Link href="/commissions">Commissions</Link>
         <Link href="/about">About</Link>
       </div>
     </nav>

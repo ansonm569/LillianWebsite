@@ -12,6 +12,10 @@
   padding: var(--space-lg) var(--space-md);
 }
 
+.imageCol {
+  box-shadow: var(--shadow-md);
+}
+
 .introCol {
   display: flex;
   flex-direction: column;

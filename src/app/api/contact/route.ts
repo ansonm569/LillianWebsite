@@ -2,8 +2,19 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY)
-  const body = await req.json()
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error('RESEND_API_KEY is not set')
+    return NextResponse.json({ error: 'The contact form is not available right now. Please email directly.' }, { status: 500 })
+  }
+
+  let body
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+  }
+
   const { name, email, subject, medium, size, timeline, budget, message } = body
 
   if (!name || !email || !message) {
@@ -22,15 +33,22 @@ export async function POST(req: NextRequest) {
   ].filter(Boolean)
 
   try {
-    await resend.emails.send({
+    const resend = new Resend(apiKey)
+    // Resend reports API failures via the `error` field rather than throwing.
+    const { error } = await resend.emails.send({
       from: 'Commissions <onboarding@resend.dev>',
       to: 'contact@lillianmackinney.com',
       replyTo: email,
       subject: `Commission inquiry from ${name}`,
       text: lines.join('\n'),
     })
+    if (error) {
+      console.error('Contact email failed:', error)
+      return NextResponse.json({ error: 'Failed to send message. Please try again.' }, { status: 500 })
+    }
     return NextResponse.json({ ok: true })
-  } catch {
+  } catch (err) {
+    console.error('Contact email failed:', err)
     return NextResponse.json({ error: 'Failed to send message. Please try again.' }, { status: 500 })
   }
 }

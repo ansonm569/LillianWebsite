@@ -26,18 +26,23 @@ export default function CommissionForm() {
       message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
     }
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
-    if (res.ok) {
-      setStatus('success')
-      form.reset()
-    } else {
-      const json = await res.json().catch(() => ({}))
-      setErrorMsg(json.error ?? 'Something went wrong. Please try again.')
+      if (res.ok) {
+        setStatus('success')
+        form.reset()
+      } else {
+        const json = await res.json().catch(() => ({}))
+        setErrorMsg(json.error ?? 'Something went wrong. Please try again.')
+        setStatus('error')
+      }
+    } catch {
+      setErrorMsg('Network error — please check your connection and try again.')
       setStatus('error')
     }
   }

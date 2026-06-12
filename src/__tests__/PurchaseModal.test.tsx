@@ -17,6 +17,8 @@ const mockArtwork: Artwork = {
   price: 400,
   available: true,
   image: '/images/test.jpg',
+  imageWidth: 1800,
+  imageHeight: 1800,
 }
 
 describe('PurchaseModal', () => {

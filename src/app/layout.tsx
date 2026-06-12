@@ -18,8 +18,14 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lillianmackinney.com'),
   title: 'Lillian MacKinney',
   description: 'Original works by Lillian MacKinney — paintings, charcoal, and ink on paper.',
+  openGraph: {
+    title: 'Lillian MacKinney',
+    description: 'Original works by Lillian MacKinney — paintings, charcoal, and ink on paper.',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

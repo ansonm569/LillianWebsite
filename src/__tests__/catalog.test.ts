@@ -10,7 +10,9 @@ describe('catalog', () => {
       expect(artwork.dimensions).toBeTruthy()
       expect(artwork.price).toBeGreaterThan(0)
       expect(typeof artwork.available).toBe('boolean')
-      expect(artwork.image).toMatch(/^\/images\/.+\.(jpg|jpeg|png|webp)$/)
+      expect(artwork.image).toMatch(/^(\/images\/.+\.(jpg|jpeg|png|webp)|https:\/\/.+)$/)
+      expect(artwork.imageWidth).toBeGreaterThan(0)
+      expect(artwork.imageHeight).toBeGreaterThan(0)
     })
   })
 

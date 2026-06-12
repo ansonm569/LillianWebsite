@@ -11,6 +11,8 @@ const base: Artwork = {
   price: 400,
   available: true,
   image: '/images/test.jpg',
+  imageWidth: 600,
+  imageHeight: 800,
 }
 
 describe('ArtworkCard', () => {

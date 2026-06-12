@@ -2,10 +2,20 @@
   padding: var(--space-xl) var(--space-md);
   max-width: var(--max-width);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
-.content {
-  max-width: 600px;
+/* Two-column top section */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.textCol {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -44,6 +54,28 @@
   color: var(--color-text);
 }
 
+/* Portrait column */
+.photoCol {
+  position: sticky;
+  top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.photoWrapper {
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.photoCaption {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* Shared section styles */
 .divider {
   width: 48px;
   height: 1px;
@@ -51,6 +83,74 @@
   flex-shrink: 0;
 }
 
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+}
+
+/* Exhibitions */
+.exhibitions {
+  max-width: 600px;
+}
+
+.exhibitionList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.exhibitionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.exhibitionItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.exhibitionTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.exhibitionMeta {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+/* Awards */
+.awards {
+  max-width: 600px;
+}
+
+.awardList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.awardList li::before {
+  content: '— ';
+  color: var(--color-muted);
+}
+
+/* Contact */
 .contactBlock {
   display: flex;
   flex-direction: column;
@@ -74,4 +174,31 @@
 
 .contactBlock a:hover {
   border-color: var(--color-text);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .photoCol {
+    position: static;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    max-width: 320px;
+  }
+
+  .photoCaption {
+    writing-mode: initial;
+  }
+}
+
+@media (max-width: 480px) {
+  .name { font-size: 2.4rem; }
+
+  .photoCol {
+    max-width: 240px;
+  }
 }

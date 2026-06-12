@@ -30,8 +30,8 @@ export default async function PiecePage({ params }: Props) {
           <Image
             src={artwork.image}
             alt={artwork.title}
-            width={900}
-            height={1200}
+            width={artwork.imageWidth}
+            height={artwork.imageHeight}
             style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
             priority
           />

@@ -11,12 +11,21 @@
   align-items: start;
 }
 
+.imageCol {
+  box-shadow: var(--shadow-md);
+}
+
 .infoCol {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
   position: sticky;
   top: var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1px;
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .title {
@@ -79,17 +88,21 @@
 
 .button {
   background: var(--color-text);
-  color: var(--color-bg);
+  color: var(--color-surface);
   border: none;
   padding: 0.85rem 2rem;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   width: fit-content;
-  transition: opacity var(--transition);
+  transition: opacity var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
-.button:hover:not(:disabled) { opacity: 0.75; }
+.button:hover:not(:disabled) {
+  opacity: 0.75;
+  box-shadow: var(--shadow-md);
+}
 .button:disabled { opacity: 0.5; cursor: default; }
 
 .sold {

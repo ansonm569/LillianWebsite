@@ -12,8 +12,8 @@ export default function ArtworkCard({ artwork }: Props) {
         <Image
           src={artwork.image}
           alt={artwork.title}
-          width={600}
-          height={800}
+          width={artwork.imageWidth}
+          height={artwork.imageHeight}
           style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
         />
         {!artwork.available && (

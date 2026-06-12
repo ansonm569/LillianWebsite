@@ -13,7 +13,7 @@
 }
 
 .modal {
-  background: var(--color-bg);
+  background: var(--color-surface);
   width: 100%;
   max-width: 500px;
   max-height: 92vh;
@@ -104,7 +104,7 @@
 
 .payBtn {
   background: var(--color-text);
-  color: var(--color-bg);
+  color: var(--color-surface);
   border: none;
   padding: 0.85rem;
   font-size: 0.72rem;

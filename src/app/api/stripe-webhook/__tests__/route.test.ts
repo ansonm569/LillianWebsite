@@ -6,11 +6,15 @@ import { NextRequest } from 'next/server'
 
 const mockConstructEvent = jest.fn()
 const mockSend = jest.fn()
+const mockCreateFromCalculation = jest.fn()
 
 jest.mock('@/lib/stripe', () => ({
   getStripe: () => ({
     webhooks: {
       constructEvent: mockConstructEvent,
+    },
+    tax: {
+      transactions: { createFromCalculation: mockCreateFromCalculation },
     },
   }),
 }))
@@ -57,6 +61,8 @@ describe('POST /api/stripe-webhook', () => {
     mockConstructEvent.mockReset()
     mockSend.mockReset()
     mockSend.mockResolvedValue({ error: null })
+    mockCreateFromCalculation.mockReset()
+    mockCreateFromCalculation.mockResolvedValue({ id: 'tax_txn_123' })
     jest.spyOn(console, 'log').mockImplementation(() => {})
     jest.spyOn(console, 'error').mockImplementation(() => {})
   })
@@ -100,6 +106,34 @@ describe('POST /api/stripe-webhook', () => {
     mockSend.mockResolvedValue({ error: { message: 'rate limited' } })
     const res = await POST(makeRequest('{}', 'good-sig'))
     expect(res.status).toBe(500)
+  })
+
+  test('records a tax transaction when the intent has a tax calculation', async () => {
+    const event = structuredClone(succeededEvent)
+    event.data.object.metadata = {
+      ...event.data.object.metadata,
+      tax_calculation: 'taxcalc_abc',
+      subtotal_cents: '40000',
+      shipping_cents: '2500',
+      tax_cents: '2338',
+    } as typeof event.data.object.metadata
+    mockConstructEvent.mockReturnValue(event)
+    const res = await POST(makeRequest('{}', 'good-sig'))
+    expect(res.status).toBe(200)
+    expect(mockCreateFromCalculation).toHaveBeenCalledWith({
+      calculation: 'taxcalc_abc',
+      reference: 'pi_123',
+    })
+    const email = mockSend.mock.calls[0][0]
+    expect(email.text).toContain('Subtotal: $400.00')
+    expect(email.text).toContain('Shipping: $25.00')
+    expect(email.text).toContain('Sales tax: $23.38')
+  })
+
+  test('skips tax recording when no calculation is present', async () => {
+    mockConstructEvent.mockReturnValue(succeededEvent)
+    await POST(makeRequest('{}', 'good-sig'))
+    expect(mockCreateFromCalculation).not.toHaveBeenCalled()
   })
 
   test('acknowledges unhandled event types without sending email', async () => {

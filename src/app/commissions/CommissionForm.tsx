@@ -24,6 +24,7 @@ export default function CommissionForm() {
       timeline: (form.elements.namedItem('timeline') as HTMLSelectElement).value,
       budget: (form.elements.namedItem('budget') as HTMLSelectElement).value,
       message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+      website: (form.elements.namedItem('website') as HTMLInputElement).value,
     }
 
     try {
@@ -49,6 +50,15 @@ export default function CommissionForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
+      {/* Honeypot — invisible to people; bots that fill it are silently dropped */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, opacity: 0 }}
+      />
       <div className={styles.row}>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="name">Name</label>

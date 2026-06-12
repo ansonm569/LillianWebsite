@@ -102,6 +102,40 @@
 
 .error { font-size: 0.85rem; color: #ef4444; }
 
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.totalsRow {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-muted);
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+  width: fit-content;
+}
+.backBtn:hover:not(:disabled) { color: var(--color-text); }
+.backBtn:disabled { opacity: 0.5; cursor: default; }
+
 .payBtn {
   background: var(--color-text);
   color: var(--color-surface);

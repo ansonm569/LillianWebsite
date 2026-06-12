@@ -51,10 +51,10 @@ export default function AboutPage() {
         <div className={styles.photoCol}>
           <div className={styles.photoWrapper}>
             <Image
-              src="https://picsum.photos/seed/lillian-portrait/480/600"
+              src="/images/about-portrait.jpg"
               alt="Lillian MacKinney"
-              width={480}
-              height={600}
+              width={1800}
+              height={1800}
               style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
             />
           </div>
